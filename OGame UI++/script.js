@@ -551,6 +551,40 @@ var userscript = function() {
   saveConfig(config);
   console.log('config.my', config.my);
 
+  $('div#planetList > .smallplanet').each(function(_, planet) {
+    var getPlanetCoords = function(planet){
+      var coordsAsText = $(planet).find('a.planetlink > span.planet-koords').text();
+      var start = coordsAsText.indexOf('[');
+      var end = coordsAsText.indexOf(']');
+      var trimmedCoords = coordsAsText.substr(start+1, end-start-1);
+      return trimmedCoords.split(':');
+    }
+
+    var mkDiv = function(url, text) {
+      return '<div style="text-align: center;"><a href="'+url+'">'+text+'</a></div>';
+    }
+
+    var coordinates = getPlanetCoords($(planet));
+    var url = 'https://s1-en.ogame.gameforge.com/game/index.php?page=fleet1';
+        url += '&galaxy='+coordinates[0];
+        url += '&system='+coordinates[1];
+        url += '&position='+coordinates[2];
+        url += '&type=1'; // Don't know why it has to be type=1
+
+    var transportLinkUrl = url + '&mission=3';
+    var transportLink = '<div style="text-align: center;"><a href="'+transportLinkUrl+'">Transport to Here</a></div>';
+
+    var deploymentLinkUrl = url + '&mission=4';
+    var deploymentLink = '<div style="text-align: center;"><a href="'+deploymentLinkUrl+'">Deploy to Here</a></div>';
+
+    // Expand the height of the planet view to accomodate for the new links
+    var originalHeight = parseInt($(planet).css('height'));
+    var newHeight = originalHeight + (2 * 15); // Each link is 15 pixels high
+    $(planet).append(deploymentLink);
+    $(planet).append(transportLink);
+    $(planet).css('height', newHeight);
+  });
+
   // util functions
   function prettyTime(seconds) {
     if (seconds <= 0 || isNaN(seconds) || !isFinite(seconds)) {
