@@ -619,7 +619,7 @@ var userscript = function() {
   });
 
   // Add a menu entry for fight simulator
-  var statsSntry = $('<li class="sim enhanced"><span class="menu_icon"><div class="customMenuEntry3 menuImage fleet1"></div></span><a class="menubutton" href="http://websim.speedsim.net/" accesskey="" target="_blank"><span class="textlabel enhancement">' + trad('MENU_FIGHTSIM') + '</span></a></li>');
+  var statsSntry = $('<li class="sim enhanced"><span class="menu_icon"><div class="customMenuEntry3 menuImage fleet1"></div></span><a class="menubutton" href="https://trashsim.universeview.be" accesskey="" target="_blank"><span class="textlabel enhancement">' + trad('MENU_FIGHTSIM') + '</span></a></li>');
   $('#menuTable').append(statsSntry);
 
   // Add a menu entry for war riders
