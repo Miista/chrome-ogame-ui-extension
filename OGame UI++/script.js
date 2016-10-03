@@ -622,10 +622,6 @@ var userscript = function() {
   var statsSntry = $('<li class="sim enhanced"><span class="menu_icon"><div class="customMenuEntry3 menuImage fleet1"></div></span><a class="menubutton" href="https://trashsim.universeview.be" accesskey="" target="_blank"><span class="textlabel enhancement">' + trad('MENU_FIGHTSIM') + '</span></a></li>');
   $('#menuTable').append(statsSntry);
 
-  // Add a menu entry for war riders
-  var warRidersEntry = $('<li class="sim enhanced"><span class="menu_icon"><div class="customMenuEntry3 menuImage fleet1"></div></span><a class="menubutton" href="http://www.war-riders.de/' + serverLang + '/' + serverNum + '/search/player/' + playerName + '" accesskey="" target="_blank"><span class="textlabel enhancement">WarRiders.de</span></a></li>');
-  $('#menuTable').append(warRidersEntry);
-
   window.spy = function(galaxy, system, position) {
     $.ajax('?page=minifleet&ajax=1', {
       data: {
